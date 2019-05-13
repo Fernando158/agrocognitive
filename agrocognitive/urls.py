@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from . import settings
+from agrocognitive_django import views
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^iniciar-sesion/$',views.iniciarSesion, name="iniciarSesion"),
+    url(r'^cerrar-sesion/$', views.cerrarSesion, name="cerrarSesion"),
 ]
