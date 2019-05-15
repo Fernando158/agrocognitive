@@ -36,9 +36,10 @@ def iniciarSesion(request):
 
 def cerrarSesion(request):
   logout(request)
-
   return redirect('/')
 
+def perfil(request):
+	return render(request, 'perfil.html')
 
 
 

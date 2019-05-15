@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Editar tu Perfil</h4>
+                  <p class="card-category">Completa tu Perfil</p>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label class="bmd-label-floating is-focused">Finca</label>
+                          <input type="text" class="form-control" value="Soca">
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group is-focused">
+                          <label class="bmd-label-floating">Username</label>
+                          <input type="text" class="form-control" value="Fernando158">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group is-focused">
+                          <label class="bmd-label-floating">Correo</label>
+                          <input type="email" class="form-control" value="fernando.salas2102@gmail.com">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group is-focused">
+                          <label class="bmd-label-floating">Nombre</label>
+                          <input type="text" class="form-control" value="Fernando">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group is-focused">
+                          <label class="bmd-label-floating">Apellido</label>
+                          <input type="text" class="form-control" value="Salas">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group is-focused">
+                          <label class="bmd-label-floating">dirección</label>
+                          <input type="text" class="form-control" value="Filas de Mariche Km9, Edificio Misuri Piso 3 Apto 3B">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group is-focused">
+                          <label class="bmd-label-floating">Ciudad</label>
+                          <input type="text" class="form-control" value="Miranda">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group is-focused">
+                          <label class="bmd-label-floating">Municipio</label>
+                          <input type="text" class="form-control" value="Sucre">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Mapa de Cultivo</label>
+                          <div class="form-group">
+                            <label class="bmd-label-floating">foto.</label>
+                            <textarea class="form-control" rows="5"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock content %}
