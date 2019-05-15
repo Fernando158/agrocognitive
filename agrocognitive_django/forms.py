@@ -16,3 +16,8 @@ class iniciarSesionForm(forms.Form):
               label = "Contraseña",
               widget = forms.PasswordInput(attrs={'style': 'width:100%'})
       )
+
+  def __init__(self, *args, **kwargs):
+    super(iniciarSesionForm, self).__init__(*args, **kwargs)
+    for i in self.fields:    
+        self.fields[i].widget.attrs.update({'class' : 'form-control'})

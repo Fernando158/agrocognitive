@@ -5,6 +5,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 import requests
 
+rojo = "color:#F00000"
+negro = "color:#000000"
+verde = "color:#009900"
+
 def home(request):
 	return render(request, 'index.html')
 
@@ -17,6 +21,8 @@ def iniciarSesion(request):
 			if user is not None:
 				if user.is_active:
 					login(request, user)
+					return redirect('/')
+					print('hola')
 				else:
 					msg = "Su usuario se encuentra inactivo."
 					return render(request,'iniciar_sesion.html', {'form': form, 'msg': msg, 'color':rojo})
@@ -25,6 +31,7 @@ def iniciarSesion(request):
 				return render(request, 'iniciar_sesion.html',{'form': form, 'msg': msg, 'color': rojo})
 	else:
 		form = iniciarSesionForm()
+		print('chao')
 	return render(request, 'iniciar_sesion.html', {'form': form})
 
 def cerrarSesion(request):
