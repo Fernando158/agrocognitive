@@ -8795,16 +8795,16 @@ a.text-dark:focus {
 
 .btn.btn-primary:hover {
   color: #fff;
-  background-color: #9124a3;
-  border-color: #701c7e;
+  background-color: #a4c635;
+  border-color: #a4c635;
 }
 
 .btn.btn-primary:focus,
 .btn.btn-primary.focus,
 .btn.btn-primary:hover {
   color: #fff;
-  background-color: #9124a3;
-  border-color: #701c7e;
+  background-color: #a4c635;
+  border-color: #a4c635;
 }
 
 .btn.btn-primary:active,
@@ -8812,8 +8812,8 @@ a.text-dark:focus {
 .open>.btn.btn-primary.dropdown-toggle,
 .show>.btn.btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #9124a3;
-  border-color: #701c7e;
+  background-color: #a4c635;
+  border-color: #a4c635;
   box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
 }
 
@@ -8830,7 +8830,7 @@ a.text-dark:focus {
 .show>.btn.btn-primary.dropdown-toggle:focus,
 .show>.btn.btn-primary.dropdown-toggle.focus {
   color: #fff;
-  background-color: #9124a3;
+  background-color: #a4c635;
   border-color: #3f1048;
 }
 
@@ -12626,7 +12626,7 @@ fieldset[disabled][disabled] .has-rose .form-control,
 .bmd-form-group .is-filled .bmd-label-floating {
   top: -1rem;
   left: 0;
-  font-size: 0.8875rem;
+  font-size: 0.9875rem;
 }
 
 .bmd-form-group .bmd-label-static {
@@ -12702,7 +12702,7 @@ fieldset[disabled][disabled] .has-rose .form-control,
 .bmd-form-group.bmd-form-group-sm .is-filled .bmd-label-floating {
   top: -1.25rem;
   left: 0;
-  font-size: 0.6875rem;
+  font-size: 0.9875rem;
 }
 
 .bmd-form-group.bmd-form-group-sm .bmd-label-static {
@@ -12778,7 +12778,7 @@ fieldset[disabled][disabled] .has-rose .form-control,
 .bmd-form-group.bmd-form-group-lg .is-filled .bmd-label-floating {
   top: -1rem;
   left: 0;
-  font-size: 0.6875rem;
+  font-size: 0.8875rem;
 }
 
 .bmd-form-group.bmd-form-group-lg .bmd-label-static {
@@ -12847,14 +12847,14 @@ label {
 
 .bmd-label-floating,
 .bmd-label-placeholder {
-  top: 0.6125rem;
+  top: 0.8125rem;
 }
 
 .is-focused .bmd-label-floating,
 .is-filled .bmd-label-floating {
   top: -1rem;
   left: 0;
-  font-size: 0.6875rem;
+  font-size: 0.8875rem;
 }
 
 .bmd-label-static {
@@ -14883,7 +14883,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .main-panel>.content {
-  margin-top: 70px;
+  margin-top: 40px;
   padding: 30px 15px;
   min-height: calc(100vh - 123px);
 }
@@ -15189,8 +15189,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 
 .fixed-plugin .btn.btn-primary:hover {
   color: #fff;
-  background-color: #9124a3;
-  border-color: #701c7e;
+  background-color: #a4c635;
+  border-color: #92a946;
 }
 
 .fixed-plugin .btn.btn-primary:focus,
@@ -16973,7 +16973,7 @@ label {
 }
 
 .card .card-body .form-group {
-  margin: 8px 0 0;
+  margin: 30px 0 0;
 }
 
 .card .card-header {

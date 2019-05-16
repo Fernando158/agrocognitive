@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from base64 import b64encode
 import requests
 import json
+import html.parser
 
 rojo = "color:#F00000"
 negro = "color:#000000"
@@ -44,37 +45,43 @@ def perfil(request):
 	return render(request, 'perfil.html')
 
 def sesion(request):
+	global client_data
+	global sessionCode
+	global client_data
 	usuario=request.user
 	client_id=usuario.client_id.encode()
 	client_secret=usuario.client_secret.encode()
+	client_data=usuario.client_data
+
 	url = "https://us-south.dynamic-dashboard-embedded.cloud.ibm.com/daas/v1/session"
-	userAndPass = b64encode(b"%s:%s" % (
-	              client_id,
-	              client_secret
-	          )).decode("ascii")
+	sessionCode='CD310cb35ba7d2a7d7b56e'
+	# userAndPass = b64encode(b"%s:%s" % (
+	#               client_id,
+	#               client_secret
+	#           )).decode("ascii")
 
-	payload = "{\r\n  \"expiresIn\": 3600,\r\n  \"webDomain\": \"http://localhost:8000/\"\r\n}"
-	headers = {
-	'accept': "application/json",
-	'Content-Type': "application/json",
-	'Authorization' : 'Basic %s' %  userAndPass
-	}
+	# payload = "{\r\n  \"expiresIn\": 3600,\r\n  \"webDomain\": \"http://localhost:8000/\"\r\n}"
+	# headers = {
+	# 'accept': "application/json",
+	# 'Content-Type': "application/json",
+	# 'Authorization' : 'Basic %s' %  userAndPass
+	# }
 
-	response = requests.request("POST", url, data=payload, headers=headers)
+	# response = requests.request("POST", url, data=payload, headers=headers)
 
-	json_data = response.text
+	# json_data = response.text
 
-	python_obj = json.loads(json_data)
+	# python_obj = json.loads(json_data)
 
-	global sessionCode
-	sessionCode = python_obj["sessionCode"]
-	print(python_obj["sessionCode"])
+	# global sessionCode
+	# sessionCode = python_obj["sessionCode"]
+	# print(python_obj["sessionCode"])
 	
 
 def analisis(request):
   sesion(request)
   # return response.json()
-  return render(request, 'analisis.html',{'sessionCode': sessionCode})
+  return render(request, 'analisis.html',{'sessionCode': sessionCode, 'client_data': client_data})
 
 
 

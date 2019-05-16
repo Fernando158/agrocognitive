@@ -4,8 +4,80 @@
 
 <div class="content">
 	<div class="col-md-12">
-		<h1>Hola mundo</h1>
+		<main class="main-content" style="width:100%;height:100% !important">
+				<div class="container">
+				  <body onload="setActionScript();" >
+					<div class="leftPanel">
+					    <div class="select">
+					      <select id="action" onchange="setActionScript()">
+					        <option disabled>API Framework</option>
+					        <option value="NewSession" select='true'>Create a session for the API</option>
+					        <option value="NewAPI">Create and initialize the API framework</option>
+					        <option value="OnError">Register a callback to handle API events</options>
+					        <option value="OffError">Unregister a API event callback</options>
+					        <option value="CloseAPI">Close the API framework</option>
+					        <option value="UpdateModuleDefinitions">Update module definitions</option>
+					        <option disabled></option>
+					        <option disabled>Invoke DashboardFactory</option>
+					        <option value="NewDashboard">Create new dashboard</option>
+					        <option value="OpenDashboard">Open dashboard</option>
+					        <option disabled></option>
+					        <option disabled>Invoke DashboardAPI</option>
+					        <option value="AddSources">Add sources to dashboard</option>
+					        <option value="AddSample">Add sources to parte 2</option>
+					        <option value="AddDemographModule">Add siniestralidad to parte 3</option>
+					        <option value="AddProtectedSources">Add protected sample source</option>
+					        <option value="AddCSVSources">Add sample CSV source</option>
+					        <option value="AddProtectedCSVSources">Add protected sample CSV source</option>
+					        <option value="SetMode">Set dashboard mode</option>
+					        <option value="Undo">Undo the last action</option>
+					        <option value="Redo">Redo the last undone action</option>
+					        <option value="GetSpec">Get the dashboard spec</option>
+					        <option value="ClearDirty">Clear the dashboard dirty state</option>
+					        <option value="ToggleProperties">Toggle the properties pane</option>
+					        <option value="OnEvent">Register a callback to handle dashboard events</option>
+					        <option value="OffEvent">Unregister a event callback</option>
+					      </select>
+					    </div>
+				   	    <div class="input" contenteditable="true" id="actionScript"></div>
+					    <div>
+					     <button type="submit" class="button" onclick="execute()">Execute</button>
+					    </div>
+				  	</div>
+				</body>
+			</div>
+				<div class="" style="height:1050px;">
+				  <div class="iframeContainer" id="containerDivId"></div>
+				</div>
+		</main>
 	</div>
 </div>
 
 {% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+    console.log('Hola fernando')
+    
+/*        var archivo = "";
+
+    datos = $.getJSON("../static/data/data.json", function(json) {
+              archivo = JSON.stringify(json)
+    });
+*/
+     function prueba() { window.api = new CognosApi({    cognosRootURL: 'https://dde-us-south.analytics.ibm.com/daas/',    sessionCode: '{{sessionCode}}',    language: 'en',    node: document.getElementById('containerDivId')});window.api.initialize().then(function() {    console.log('API created successfully.'); prueba2()}, function(err) {    console.log('Failed to create API. ' + err.message);});
+      }
+
+    /*client_data se recibe con safe para escapar de los errores de comillas*/
+
+    function prueba2(){    
+      window.api.dashboard.openDashboard({  dashboardSpec: {{ client_data|safe }} }).then(    function(dashboardAPI) {        console.log('Dashboard created successfully.');        window.dashboardAPI = dashboardAPI;    }).catch(    function(err) {        console.log(err);    });
+    	}
+    $(document).ready( function() {
+      prueba();
+    });
+
+     </script> 
+      <script src="{{ STATIC_URL }}js/cognos.js"></script>
+{% endblock scripts%}

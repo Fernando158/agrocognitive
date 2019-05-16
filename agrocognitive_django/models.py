@@ -63,6 +63,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     direccion = models.TextField(max_length = 1000)
     client_id = models.CharField(blank = True, null = True, max_length = 50)
     client_secret = models.CharField(blank = True, null = True, max_length = 50)
+    client_data = models.CharField(blank = True, null = True, max_length = 2000000)
     # validation_status =
 
     USERNAME_FIELD = 'ident'

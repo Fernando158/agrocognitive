@@ -8,25 +8,26 @@
 		background: white !important
 	}
 </style>
-<header class="site-header" style="background-color:black">
-        <div class="top-header">
-          <div class="container">
-          <div align="center">
-            <a href="/" align="center" id="#">
-              <img src="/static/img/Agrocognitive2.jpg" alt="
-              Company Name" height="100">
-            </a> <!-- #branding -->
-            </div>
-          </div> <!-- .container -->
-        </div> <!-- .top-header -->
-  </header>
+
 <main class="main-content">
-	<div class="container" style="margin: 2% 5% 5% 5%;" align="center">
-		<div class="card" style="padding:20px 0px 30px 0px;width:600px;">	
+	<div class="container" style="margin: 7% 5% 5% 5%;" align="center">
+		<div class="card" style="padding:20px 0px 30px 0px;width:600px;">
+			<header class="site-header" style="margin-bottom:30px;">
+		        <div class="top-header">
+		          <div class="container">
+		          <div align="center">
+		            <a href="/" align="center" id="#">
+		              <img src="/static/img/AgroCognitive-White.png" alt="
+		              Company Name" height="80">
+		            </a> <!-- #branding -->
+		            </div>
+		          </div> <!-- .container -->
+		        </div> <!-- .top-header -->
+		  	</header>	
 			<div class="col-sm-10" style="float:none;">
 				<div role="tabapanel" class="tab-pane active" id="registro">
 					<form method="POST" encType="multipart/form-data" name="formReporte">
-						<h1>Inicio de Sesión</h1>
+
 						{% csrf_token %}
 
 						{% if msg %}
