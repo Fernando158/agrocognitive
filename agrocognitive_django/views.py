@@ -3,7 +3,9 @@ from agrocognitive_django.forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
+from base64 import b64encode
 import requests
+import json
 
 rojo = "color:#F00000"
 negro = "color:#000000"
@@ -40,6 +42,39 @@ def cerrarSesion(request):
 
 def perfil(request):
 	return render(request, 'perfil.html')
+
+def sesion(request):
+	usuario=request.user
+	client_id=usuario.client_id.encode()
+	client_secret=usuario.client_secret.encode()
+	url = "https://us-south.dynamic-dashboard-embedded.cloud.ibm.com/daas/v1/session"
+	userAndPass = b64encode(b"%s:%s" % (
+	              client_id,
+	              client_secret
+	          )).decode("ascii")
+
+	payload = "{\r\n  \"expiresIn\": 3600,\r\n  \"webDomain\": \"http://localhost:8000/\"\r\n}"
+	headers = {
+	'accept': "application/json",
+	'Content-Type': "application/json",
+	'Authorization' : 'Basic %s' %  userAndPass
+	}
+
+	response = requests.request("POST", url, data=payload, headers=headers)
+
+	json_data = response.text
+
+	python_obj = json.loads(json_data)
+
+	global sessionCode
+	sessionCode = python_obj["sessionCode"]
+	print(python_obj["sessionCode"])
+	
+
+def analisis(request):
+  sesion(request)
+  # return response.json()
+  return render(request, 'analisis.html',{'sessionCode': sessionCode})
 
 
 
