@@ -66,16 +66,16 @@
               archivo = JSON.stringify(json)
     });
 */
-     function prueba() { window.api = new CognosApi({    cognosRootURL: 'https://dde-us-south.analytics.ibm.com/daas/',    sessionCode: '{{sessionCode}}',    language: 'en',    node: document.getElementById('containerDivId')});window.api.initialize().then(function() {    console.log('API created successfully.'); prueba2()}, function(err) {    console.log('Failed to create API. ' + err.message);});
+     function IniciarCognos() { window.api = new CognosApi({    cognosRootURL: 'https://dde-us-south.analytics.ibm.com/daas/',    sessionCode: '{{sessionCode}}',    language: 'en',    node: document.getElementById('containerDivId')});window.api.initialize().then(function() {    console.log('API created successfully.'); CargarDashboard()}, function(err) {    console.log('Failed to create API. ' + err.message);});
       }
 
     /*client_data se recibe con safe para escapar de los errores de comillas*/
 
-    function prueba2(){    
+    function CargarDashboard(){    
       window.api.dashboard.openDashboard({  dashboardSpec: {{ client_data|safe }} }).then(    function(dashboardAPI) {        console.log('Dashboard created successfully.');        window.dashboardAPI = dashboardAPI;    }).catch(    function(err) {        console.log(err);    });
     	}
     $(document).ready( function() {
-      prueba();
+      IniciarCognos();
     });
 
      </script> 
