@@ -13792,8 +13792,8 @@ h2.title {
   border-radius: 3px;
   line-height: 24px;
   text-transform: uppercase;
-  font-size: 12px;
-  padding: 10px 15px;
+  font-size: 15px;
+  /*padding: 10px 15px;*/
   background-color: transparent;
   transition: 0.3s background-color 0s;
 }
@@ -13807,7 +13807,7 @@ h2.title {
 .nav-tabs .nav-item .nav-link:focus {
   border: 0 !important;
   color: #fff !important;
-  font-weight: 500;
+  /*font-weight: 500;*/
 }
 
 .nav-tabs .nav-item.disabled .nav-link,

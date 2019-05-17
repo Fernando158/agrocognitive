@@ -52,30 +52,29 @@ def sesion(request):
 	client_id=usuario.client_id.encode()
 	client_secret=usuario.client_secret.encode()
 	client_data=usuario.client_data
-
 	url = "https://us-south.dynamic-dashboard-embedded.cloud.ibm.com/daas/v1/session"
-	sessionCode='CD310cb35ba7d2a7d7b56e'
-	# userAndPass = b64encode(b"%s:%s" % (
-	#               client_id,
-	#               client_secret
-	#           )).decode("ascii")
 
-	# payload = "{\r\n  \"expiresIn\": 3600,\r\n  \"webDomain\": \"http://localhost:8000/\"\r\n}"
-	# headers = {
-	# 'accept': "application/json",
-	# 'Content-Type': "application/json",
-	# 'Authorization' : 'Basic %s' %  userAndPass
-	# }
+	userAndPass = b64encode(b"%s:%s" % (
+	              client_id,
+	              client_secret
+	          )).decode("ascii")
 
-	# response = requests.request("POST", url, data=payload, headers=headers)
+	payload = "{\r\n  \"expiresIn\": 3600,\r\n  \"webDomain\": \"http://localhost:8000/\"\r\n}"
+	headers = {
+	'accept': "application/json",
+	'Content-Type': "application/json",
+	'Authorization' : 'Basic %s' %  userAndPass
+	}
 
-	# json_data = response.text
+	response = requests.request("POST", url, data=payload, headers=headers)
 
-	# python_obj = json.loads(json_data)
+	json_data = response.text
 
-	# global sessionCode
-	# sessionCode = python_obj["sessionCode"]
-	# print(python_obj["sessionCode"])
+	python_obj = json.loads(json_data)
+
+	global sessionCode
+	sessionCode = python_obj["sessionCode"]
+	print(python_obj["sessionCode"])
 	
 
 def analisis(request):
@@ -83,5 +82,13 @@ def analisis(request):
   # return response.json()
   return render(request, 'analisis.html',{'sessionCode': sessionCode, 'client_data': client_data})
 
+def ordenes(request):
+	return render(request, 'ordenes.html')
+
+def monitoreo(request):
+	return render(request, 'monitoreo.html')
+
+def facturacion(request):
+	return render(request, 'facturacion.html')
 
 

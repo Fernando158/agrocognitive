@@ -25,5 +25,8 @@ urlpatterns = [
     url(r'^iniciar-sesion/$',views.iniciarSesion, name="iniciarSesion"),
     url(r'^perfil/$',views.perfil, name="perfil"),
     url(r'^analisis/$', views.analisis, name="analisis"),
+    url(r'^ordenes/$', views.ordenes, name="ordenes"),
+    url(r'^monitoreo/$', views.monitoreo, name="monitoreo"),
+    url(r'^facturacion/$', views.facturacion, name="facturacion"),
     url(r'^cerrar-sesion/$', views.cerrarSesion, name="cerrarSesion"),
 ]
