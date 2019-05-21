@@ -795,8 +795,8 @@ input[type="button"]:focus {
 }
 .nav-pills > li > a:after {
   content: '';
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   display: inline-block;
   position: absolute;
@@ -813,12 +813,12 @@ input[type="button"]:focus {
 }
 .nav-pills > li.active > a:after {
   content: '';
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   display: inline-block;
   position: absolute;
-  right: 5px;
+  right: 0px;
   top: -2px;
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -835,7 +835,7 @@ input[type="button"]:focus {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   background-color: transparent;
-  font-size: 15px;
+  font-size: 17px;
   -webkit-transition: font-size 0.2s linear;
   -moz-transition: font-size 0.2s linear;
   -o-transition: font-size 0.2s linear;
@@ -846,7 +846,7 @@ input[type="button"]:focus {
 .nav-pills > li.active > a:hover [class*="fas"],
 .nav-pills > li.active > a:focus [class*="fas"] {
   color: #FFFFFF;
-  font-size: 24px;
+  font-size: 30px;
   top: 21px;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
@@ -1007,14 +1007,14 @@ input[type="button"]:focus {
   text-align: center;
 }
 .wizard-card .icon-circle {
-  font-size: 20px;
+  font-size: 30px;
   border: 3px solid #F3F2EE;
   text-align: center;
   border-radius: 50%;
   color: rgba(0, 0, 0, 0.2);
   font-weight: 600;
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   background-color: #FFFFFF;
   margin: 0 auto;
   position: relative;
@@ -1379,4 +1379,8 @@ input[type="button"]:focus {
 .remove-image:active {
   border: 0;
   transition: all .2s ease;
+}
+
+.font-li{
+  font-size:15px;
 }
