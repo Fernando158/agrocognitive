@@ -12614,7 +12614,7 @@ fieldset[disabled][disabled] .has-rose .form-control,
 .bmd-form-group .checkbox label,
 .bmd-form-group .radio label,
 .bmd-form-group label {
-  font-size: 0.875rem;
+  font-size: 0.9875rem;
 }
 
 .bmd-form-group .bmd-label-floating,
@@ -12900,7 +12900,7 @@ label {
 select,
 select.form-control {
   -moz-appearance: none;
-  -webkit-appearance: none;
+  /*-webkit-appearance: none;*/
 }
 
 @media (min-width: 576px) {
@@ -12935,7 +12935,7 @@ select.form-control {
 }
 
 .form-group {
-  padding-bottom: 10px;
+/*  padding-bottom: 10px;*/
   position: relative;
   margin: 8px 0 0;
 }
@@ -17154,6 +17154,7 @@ label {
 
 .card [class*="card-header-"] .ct-chart .ct-label {
   color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
 }
 
 .card [class*="card-header-"] .ct-chart .ct-grid {
@@ -17615,7 +17616,7 @@ Copyright (c) 2015 Daniel Eden
 .ct-chart .ct-series-b .ct-slice-pie,
 .ct-chart .ct-series-b .ct-slice-donut-solid,
 .ct-chart .ct-series-b .ct-area {
-  stroke: #f44336;
+  stroke: #c1e2fc;
 }
 
 .ct-chart .ct-series-c .ct-point,
@@ -17678,7 +17679,7 @@ Copyright (c) 2015 Daniel Eden
 .ct-chart .ct-series-b .ct-slice-pie,
 .ct-chart .ct-series-b .ct-slice-donut-solid,
 .ct-chart .ct-series-b .ct-area {
-  fill: #f44336;
+  fill: #c1e2fc;
 }
 
 .ct-chart .ct-series-c .ct-slice-pie,
@@ -18819,4 +18820,14 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 
+@media (min-width: 992px) {
+    .col-md-offset-1-and-half {
+        margin-left: 12.499999995%;
+    }
+}
+
+.areas{
+  text-align:center;
+  border-right:2px solid green;
+}
 /*# sourceMappingURL=dashboard-free.css.map */

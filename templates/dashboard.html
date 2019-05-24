@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+	<title>Hello</title>
+</head>
+
+  
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-chart">
+                <div class="card-header card-header-success">
+                  <div class="ct-chart" id="produccion" style="margin-top:20px"></div>
+                  <div class="row" style="text-align:center;">
+                  <div class="col-md-12"><h2>Estado por Cultivo</h2></div>
+                  <div class="col-md-3 col-md-3 col-md-offset-1-and-half">
+                     <div id="donut-example" style="height:250px !important"></div>
+                   </div>
+                   <div class="col-md-3">
+                     <div id="donut" style="height:250px !important"></div>
+                   </div>
+                   <div class="col-md-3">
+                     <div id="example" style="height:250px !important"></div>
+                   </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">access_time</i> updated 4 minutes ago
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <div class="row">
+       <div class="container-fluid">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h3 class="card-title">Areas Afectadas</h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                  <div class="col-md-4 areas"><h3>Plagas<br>15%</h3></div>
+                  <div class="col-md-4 areas"><h3>Estrés hídrico<br>7%</h3></div>
+                  <div class="col-md-4"><h3>Fertilización<br>5%</h3></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="row">
+       <div class="container-fluid">
+          <div class="card">
+            <div class="card-header card-header-success">
+              <h3 class="card-title">Notifications</h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-11">
+                <div class="alert alert-primary alert-with-icon" data-notify="container">
+                    <i class="material-icons" data-notify="icon">notification_important</i>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <i class="material-icons">close</i>
+                    </button>
+                    <span data-notify="message">Proximo Monitoreo Arroz 28/8/2019.</span>
+                  </div>
+                  <div class="alert alert-warning alert-with-icon" data-notify="container">
+                    <i class="material-icons" data-notify="icon">warning</i>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <i class="material-icons">close</i>
+                    </button>
+                    <span data-notify="message">Factura Vencida.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-tabs card-header-primary">
+                  <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                      <h4 class="card-title">Historial de Ordenes</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="profile">
+                      <table class="table">
+	                    <thead class="text-success" style="text-align:center;">
+	                      <th>Descripcion</th>
+	                      <th>Status</th>
+	                      <th>Acci&oacute;n</th>
+	                    </thead>
+                        <tbody>
+                          <tr>
+                            <td>Estado del arroz, Coordenadas xyz</td>
+                            <td>Pendiente</td>
+                            <td class="td-actions text-right">
+                              <button type="button" rel="tooltip" title="Ver Orden" class="btn btn-dark btn-link btn-sm">
+                                <i class="fas fa X2 fa-eye"></i>
+                              </button>
+                              <button type="button" rel="tooltip" title="Editar Orden" class="btn btn-primary btn-link btn-sm">
+                                <i class="fas fa x2 fa-edit"></i>
+                              </button>
+                              <button type="button" rel="tooltip" title="Eliminar" class="btn btn-danger btn-link btn-sm">
+                                <i class="fas fa x2 fa-trash-alt"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Estado del Cultivo, Coordenadas xyz</td>
+                            <td>Pendiente</td>
+                            <td class="td-actions text-right">
+                              <button type="button" rel="tooltip" title="Ver Orden" class="btn btn-dark btn-link btn-sm">
+                                <i class="fas fa X2 fa-eye"></i>
+                              </button>
+                              <button type="button" rel="tooltip" title="Editar Orden" class="btn btn-primary btn-link btn-sm">
+                                <i class="fas fa x2 fa-edit"></i>
+                              </button>
+                              <button type="button" rel="tooltip" title="Eliminar" class="btn btn-danger btn-link btn-sm">
+                                <i class="fas fa x2 fa-trash-alt"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Estado del Suelo, Coordenadas xyz
+                            </td>
+                            <td>Cancelada</td>
+                            <td class="td-actions text-right">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Estado del Agua, Coordenadas xyz</td>
+                            <td>Finalizada</td>
+                            <td class="td-actions text-right">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-warning">
+                  <h4 class="card-title">Facturas Emitidas</h4>
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-hover">
+                    <thead class="text-warning">
+                      <th>Concepto</th>
+                      <th>Costo</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Estado del arroz, Coordenadas xyz</td>
+                        <td>$36,738</td>
+                      </tr>
+                      <tr>
+                        <td>Estado del arroz, Coordenadas xyz</td>
+                        <td>$23,789</td>
+                      </tr>
+                      <tr>
+                        <td>Estado del arroz, Coordenadas xyz</td>
+                        <td>$56,142</td>
+                      </tr>
+                      <tr>
+                        <td>Estado del arroz, Coordenadas xyz</td>
+                        <td>$38,735</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="container-fluid">
+          <nav class="float-left">
+            <ul>
+              <li>
+                <a href="#">
+                  Contacto
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Redes Sociales
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright float-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, Hecho con <i class="material-icons">favorite</i> by
+            <a href="http://smartbasegroup.com/" target="_blank">SmartbaseGroup</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
+ 
+
+{% endblock content %}

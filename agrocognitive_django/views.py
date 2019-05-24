@@ -24,8 +24,7 @@ def iniciarSesion(request):
 			if user is not None:
 				if user.is_active:
 					login(request, user)
-					return redirect('/')
-					print('hola')
+					return redirect('dashboard')
 				else:
 					msg = "Su usuario se encuentra inactivo."
 					return render(request,'iniciar_sesion.html', {'form': form, 'msg': msg, 'color':rojo})
@@ -36,6 +35,9 @@ def iniciarSesion(request):
 		form = iniciarSesionForm()
 		print('chao')
 	return render(request, 'iniciar_sesion.html', {'form': form})
+
+def dashboard(request):
+	return render(request, 'dashboard.html')
 
 def cerrarSesion(request):
   logout(request)

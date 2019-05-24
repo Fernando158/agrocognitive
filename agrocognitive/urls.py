@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name="home"),
     url(r'^iniciar-sesion/$',views.iniciarSesion, name="iniciarSesion"),
+    url(r'^dashboard/$',views.dashboard, name="dashboard"),
     url(r'^perfil/$',views.perfil, name="perfil"),
     url(r'^analisis/$', views.analisis, name="analisis"),
     url(r'^ordenes/$', views.ordenes, name="ordenes"),

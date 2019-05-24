@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link href="{{ STATIC_URL }}css/material-dashboard.css" rel="stylesheet" />
+    <link href="{{ STATIC_URL }}css/morris.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/cognos.css">
   {% endblock style %}
     <title>Agrocognitive</title>
@@ -33,7 +34,7 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="../">
+            <a class="nav-link" href="{% url 'dashboard' %}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
@@ -95,7 +96,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Perfil</a>
+                  <a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'cerrarSesion' %}">Salir</a>
                 </div>
@@ -123,6 +124,9 @@
   <script src="{{ STATIC_URL }}js/plugins/bootstrap-datetimepicker.min.js"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
   <script src="{{ STATIC_URL }}js/plugins/jquery.dataTables.min.js"></script>
+  <script src="{{ STATIC_URL }}js/plugins/morris.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
   <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
   <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
   <script src="{{ STATIC_URL }}js/plugins/fullcalendar.min.js"></script>
@@ -151,12 +155,11 @@
           });
          var URLactual = window.location.pathname;
          console.log(URLactual)
-         if (URLactual != "/") {
+/*         if (URLactual != "/") {*/
             var url = $('a[href="'+URLactual+'"]');
             url.parents('li').addClass('active')
             url.parents('ul').slideDown()
-          }
-
+/*          }*/
 
         $('.switch-sidebar-image input').change(function() {
           $full_page_background = $('.full-page-background');
@@ -190,6 +193,63 @@
           }
         });
 
+        var data = {
+        labels: ['Arroz', 'Maiz', 'Caña'],
+        series: [20, 15, 40]
+      };
+
+      var options = {
+        labelInterpolationFnc: function(value) {
+          return value[0]
+        }
+      };
+
+      var responsiveOptions = [
+        ['screen and (min-width: 640px)', {
+          chartPadding: 10,
+          labelOffset: 80,
+          labelDirection: 'explode',
+          labelInterpolationFnc: function(value) {
+            return value;
+          }
+        }],
+        ['screen and (min-width: 1024px)', {
+          labelOffset: 55,
+          chartPadding: 0
+        }]
+      ];
+
+      new Chartist.Pie('#produccion', data, options, responsiveOptions);
+
+
+    Morris.Donut({
+      element: 'donut-example',
+      data: [
+        {label: "Arroz", value: 90},
+        {label: "", value: 10}
+      ],
+      colors:['#ffa726','#fff'],
+      formatter: function (y) { return y + "%" }
+    });
+
+      Morris.Donut({
+      element: 'donut',
+      data: [
+        {label: "Maiz", value: 50},
+        {label: "", value: 50}
+      ],
+      colors:['#97e4e7','#fff'],
+      formatter: function (y) { return y + "%" }
+    });
+
+      Morris.Donut({
+      element: 'example',
+      data: [
+        {label: "Caña", value: 100}
+      ],
+      colors:['#9aafd5','#fff'],
+      formatter: function (y) { return y + "%" }
+    });
         $('.switch-sidebar-mini input').change(function() {
           $body = $('body');
 
