@@ -14,23 +14,17 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card card-chart">
-                <div class="card-header card-header-success">
-                  <div class="ct-chart" id="produccion" style="margin-top:20px"></div>
+                <div class="card-header card-header">
                   <div class="row" style="text-align:center;">
-                  <div class="col-md-12"><h2>Estado por Cultivo</h2></div>
-                  <div class="col-md-3 col-md-3 col-md-offset-1-and-half">
-                     <div id="donut-example" style="height:250px !important"></div>
-                   </div>
-                   <div class="col-md-3">
-                     <div id="donut" style="height:250px !important"></div>
-                   </div>
-                   <div class="col-md-3">
-                     <div id="example" style="height:250px !important"></div>
-                   </div>
-                  </div>
-                </div>
-                <div class="card-body">
-                </div>
+                    <div class="col-md-12" style="margin-bottom:30px;">  
+                      <div class="card-header card-header-primary">
+                        <h3 class="card-title">Rendimientos Predictivos</h3>
+                      </div>
+                    </div>
+                <div class="col-md-5" style="margin-left:10px"><canvas class="mx-auto" id="chart-pie" width="280" height="280" style="display: block;"></canvas></div>
+                <div class="col-md-2" style="padding:0px !important;"><div id="donut-example" style="height:250px !important"></div></div>
+                <div class="col-md-2" style="padding:0px !important;"><div id="donut" style="height:250px !important"></div></div>
+                <div class="col-md-2" style="padding:0px !important;"><div id="example" style="height:250px !important"></div></div>
                 <div class="card-footer">
                   <div class="stats">
                     <i class="material-icons">access_time</i> updated 4 minutes ago
@@ -49,30 +43,30 @@
               <div class="row">
                   <div class="col-md-4 areas"><h3>Plagas<br>15%</h3></div>
                   <div class="col-md-4 areas"><h3>Estrés hídrico<br>7%</h3></div>
-                  <div class="col-md-4"><h3>Fertilización<br>5%</h3></div>
+                  <div class="col-md-4" style="text-align:center;"><h3>Fertilización<br>5%</h3></div>
               </div>
 
             </div>
           </div>
         </div>
       </div>
-    <div class="row">
+    <div class="row" style="display:none">
        <div class="container-fluid">
           <div class="card">
             <div class="card-header card-header-success">
-              <h3 class="card-title">Notifications</h3>
+              <h3 class="card-title">Notificaciones</h3>
             </div>
             <div class="card-body">
               <div class="row">
                 <div class="col-md-11">
-                <div class="alert alert-primary alert-with-icon" data-notify="container">
+                <div class="alert alert-warning alert-with-icon" data-notify="container">
                     <i class="material-icons" data-notify="icon">notification_important</i>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <i class="material-icons">close</i>
                     </button>
                     <span data-notify="message">Proximo Monitoreo Arroz 28/8/2019.</span>
                   </div>
-                  <div class="alert alert-warning alert-with-icon" data-notify="container">
+                  <div class="alert alert-danger alert-with-icon" data-notify="container">
                     <i class="material-icons" data-notify="icon">warning</i>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <i class="material-icons">close</i>
@@ -211,6 +205,7 @@
             &copy;
             <script>
               document.write(new Date().getFullYear())
+
             </script>, Hecho con <i class="material-icons">favorite</i> by
             <a href="http://smartbasegroup.com/" target="_blank">SmartbaseGroup</a>
           </div>
@@ -222,3 +217,101 @@
  
 
 {% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+<script type="text/javascript">
+  var data = {
+            labels: ['Arroz', 'Maiz', 'Caña'],
+            series: [20, 15, 40]
+          };
+
+          var options = {
+            labelInterpolationFnc: function(value) {
+              return value[0]
+            }
+          };
+
+          var responsiveOptions = [
+            ['screen and (min-width: 640px)', {
+              chartPadding: 10,
+              labelOffset: 80,
+              labelDirection: 'explode',
+              labelInterpolationFnc: function(value) {
+                return value;
+              }
+            }],
+            ['screen and (min-width: 1024px)', {
+              labelOffset: 55,
+              chartPadding: 0
+            }]
+          ];
+
+           Morris.Donut({
+          element: 'donut-example',
+          data: [
+            {label: "Arroz", value: 90},
+            {label: "", value: 10}
+          ],
+          colors:['#ffa726','#fff'],
+          formatter: function (y) { return y + "%" }
+        });
+
+          Morris.Donut({
+          element: 'donut',
+          data: [
+            {label: "Maiz", value: 50},
+            {label: "", value: 50}
+          ],
+          colors:['#97e4e7','#fff'],
+          formatter: function (y) { return y + "%" }
+        });
+
+          Morris.Donut({
+          element: 'example',
+          data: [
+            {label: "Caña", value: 100}
+          ],
+          colors:['#9aafd5','#fff'],
+          formatter: function (y) { return y + "%" }
+        });
+
+         // ==============================================
+    // Pie chart
+    //
+    new Chart($("#chart-pie"), {
+      type: 'pie',
+
+      // Data
+      //
+      data: {
+        labels: [
+          "Arroz",
+          "Maiz",
+          "Caña"
+        ],
+        datasets: [
+          {
+            data: [300, 50, 100],
+            backgroundColor: [
+              'rgb(255, 167, 38)',
+              'rgb(151, 228, 231)',
+              'rgb(154, 175, 213)'
+            ],
+            color: [
+                'red',    // color for data at index 0
+                'blue',   // color for data at index 1
+                'green'
+            ]
+          }]
+      },
+
+      // Options
+      //
+      options: {
+        responsive: false
+      }
+    });
+ new Chartist.Pie('#produccion', data, options, responsiveOptions);
+</script>
+{% endblock scripts%}

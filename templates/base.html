@@ -45,11 +45,40 @@
               <p>Perfil de Usuario</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{% url 'monitoreo' %}">
-              <i class="fas fa-helicopter"></i>
-              <p>Monitoreo</p>
-            </a>
+          <li class="nav-item" id="monitoreo">
+             <a id="pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link" style="font-size:14px;" href="#">
+                <i class="fas fa-helicopter"></i>
+                Monitoreo
+             </a>
+
+            <ul class="collapse list-unstyled" style="background-color: rgba(200, 200, 200, 0.2);">
+               
+               <li class="nav-item">
+                  <a href="{% url 'monitoreo' %}" class="nav-link">
+                    <i class="far fa-file-alt"></i>
+                    <p>Solicitar Monitoreo</p>
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <p>An&aacute;lisis Actual</p>
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    <p>Hist&oacute;ricos y Evolutivos</p>
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-print"></i>
+                    <p>Reportes</p>
+                  </a>
+               </li>
+
+            </ul>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="{% url 'ordenes' %}">
@@ -87,10 +116,24 @@
           </button>
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
-
+            <span style="margin-right:10px;">Bienvenido: {{user.first_name}} </span>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa x2 fa-bell"></i>
+                  <span class="notification">3</span>
+                  <p class="d-lg-none d-md-block">
+                    Some Actions
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Proximo Monitoreo Arroz 28/8/2019</a>
+                  <a class="dropdown-item" href="#">Factura Vencida.</a>
+                  <a class="dropdown-item" href="#">Atra Notificacion</a>
+                </div>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span style="margin-right:10px;">Bienvenido: {{user.first_name}} </span><i class="fas fa x2 fa-user"></i>
+                  <i class="fas fa x2 fa-user"></i>
                   <p class="d-lg-none d-md-block">
                     Account
                   </p>
@@ -134,6 +177,8 @@
   <script src="{{ STATIC_URL }}js/material-dashboard.js" type="text/javascript"></script>
     <!-- Chartist JS -->
   <script src="{{ STATIC_URL }}js/plugins/chartist.min.js"></script>
+  <script src="http://thetheme.io/theadmin/assets/vendor/chartjs/Chart.min.js"></script>
+
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -150,16 +195,36 @@
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
 
-        $('.sidebar-wrapper ul.nav li a').click(function(){
-            window.location.href = $(this).attr("href");
+        $('#monitoreo').css('background-color','#fff')
+
+        $('.sidebar-wrapper ul.nav li:has(ul)').on('click',function(e){
+          e.preventDefault();
+            if ($(this).hasClass('active')){
+                $(this).removeClass('active');
+                $(this).children('ul').slideUp();
+                $(this).removeAttr('style')
+                $(this).css('background-color','#eee')
+                console.log('if')
+              } else {
+                $('.sidebar-wrapper ul.nav li ul').slideUp();
+                $('.sidebar-wrapper ul.nav li').removeClass('active');
+                $(this).addClass('active');
+                $(this).children('ul').slideDown();
+              }
+            });
+
+         $('.sidebar-wrapper ul.nav li a').click(function(){
+            if ($(this).attr("href") != "#") {
+              window.location.href = $(this).attr("href");
+            }
           });
-         var URLactual = window.location.pathname;
-         console.log(URLactual)
-/*         if (URLactual != "/") {*/
-            var url = $('a[href="'+URLactual+'"]');
-            url.parents('li').addClass('active')
-            url.parents('ul').slideDown()
-/*          }*/
+
+        
+          var URLactual = window.location.pathname;
+          console.log(URLactual)
+          var url = $('a[href="'+URLactual+'"]');
+          url.parents('li').addClass('active')
+          url.parents('ul').slideDown()
 
         $('.switch-sidebar-image input').change(function() {
           $full_page_background = $('.full-page-background');
@@ -193,63 +258,7 @@
           }
         });
 
-        var data = {
-        labels: ['Arroz', 'Maiz', 'Caña'],
-        series: [20, 15, 40]
-      };
-
-      var options = {
-        labelInterpolationFnc: function(value) {
-          return value[0]
-        }
-      };
-
-      var responsiveOptions = [
-        ['screen and (min-width: 640px)', {
-          chartPadding: 10,
-          labelOffset: 80,
-          labelDirection: 'explode',
-          labelInterpolationFnc: function(value) {
-            return value;
-          }
-        }],
-        ['screen and (min-width: 1024px)', {
-          labelOffset: 55,
-          chartPadding: 0
-        }]
-      ];
-
-      new Chartist.Pie('#produccion', data, options, responsiveOptions);
-
-
-    Morris.Donut({
-      element: 'donut-example',
-      data: [
-        {label: "Arroz", value: 90},
-        {label: "", value: 10}
-      ],
-      colors:['#ffa726','#fff'],
-      formatter: function (y) { return y + "%" }
-    });
-
-      Morris.Donut({
-      element: 'donut',
-      data: [
-        {label: "Maiz", value: 50},
-        {label: "", value: 50}
-      ],
-      colors:['#97e4e7','#fff'],
-      formatter: function (y) { return y + "%" }
-    });
-
-      Morris.Donut({
-      element: 'example',
-      data: [
-        {label: "Caña", value: 100}
-      ],
-      colors:['#9aafd5','#fff'],
-      formatter: function (y) { return y + "%" }
-    });
+   
         $('.switch-sidebar-mini input').change(function() {
           $body = $('body');
 
@@ -285,6 +294,8 @@
         });
       });
     });
+  
+ 
   </script>
   <script>
     $(document).ready(function() {
