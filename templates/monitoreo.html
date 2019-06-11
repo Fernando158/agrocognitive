@@ -115,8 +115,8 @@
 					                   </div>
 		                        	</div>
 		                        <div class="wizard-footer">
-		                            <div class="pull-right">
-		                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Siguiente' />
+		                            <div class="pull-right"  style="display:none" >
+		                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Siguiente' id="btn-siguiente"/>
 		                                <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Finalizar' />
 		                            </div>
 
@@ -146,5 +146,6 @@
 	<script type="text/javascript">
 /*	const  iframes  =  iFrameResize ([{options}], [css selector] || [iframe]);*/
 	iFrameResize({ log: true }, '#myIframe')
-	</script>
+ $('#myIframe').on('load', function(){ var iframe = $('#myIframe').contents(); iframe.find("#jamon").click(function(){ console.log("test");})}); 
+ </script>
 {% endblock scripts%}

@@ -320,15 +320,13 @@ tempConstructor.prototype.crearControles = function(idElemento){
                 `</div>`,
                 `<div id="${this.nombre}-sel-puntos" unselectable="on" ${styPoligono}>`,
                     `<button type="button" onclick="${this.nombre}.borrarPuntos()" class="btn btn-danger pull-right">Borrar</button>`,
-                    `<div class="form-check">
-                        <label class="form-check-label">Mover
+                    `<button type="button" onclick="${this.nombre}.construirPoligono(null)" class="btn btn-primary pull-right">Construir</button>`,
+                    `<label class="form-check form-check-label btn btn-primary pull-right">Mover
                             <input class="form-check-input" type="checkbox" value="1" id="${this.nombre}-mover-puntos" onclick="${this.nombre}.activarMoverPuntos(this.checked)" checked="">
                             <span class="form-check-sign">
                                 <span class="check"></span>
                             </span>
-                        </label>
-                    </div>`,
-                    `<button type="button" onclick="${this.nombre}.construirPoligono(null)" class="btn btn-primary pull-right">Construir</button>`,
+                    </label>`,
                         `<div id="${this.nombre}-divpol" style="display:none">`,
                             `<label class="${this.nombre}-keyboard">Lados <input type="number" id="${this.nombre}-lados-poligono" min="0" max="99" size="0" value="0" /></label>`,
                             `<label class="${this.nombre}-keyboard">Curva `, 
@@ -1192,7 +1190,6 @@ tempConstructor.prototype.seleccionarPunto = function(num=0){
         }
     } catch(e) {_msg(e, "seleccionarPunto")}
     return punto;
-    console.log('seleccionarPunto')
 };
 
 
@@ -1208,7 +1205,6 @@ tempConstructor.prototype.seleccionarPuntoAvance = function(masMenos=1){
         }
     } catch(e) {_msg(e, "seleccionarPuntoSiguiente")}
     return punto;
-    console.log('seleccionarPuntoAvance')
 };
 
 tempConstructor.prototype.aplicarPropiedadesPunto = function(){
@@ -1864,7 +1860,6 @@ tempConstructor.prototype.moverPunto = function(num, x, y){
             this.guardar();
         }
     } catch(e) {_msg(e, "moverPunto")}
-    console.log('Moviendo punto')
     return punto;
 };
 
@@ -1891,7 +1886,6 @@ tempConstructor.prototype.moverPuntoControl = function(num, numCtrl, x, y){
         this.setPosLin(this.getLinea(num-1), null, null, null, null, punto.plus);
         this.guardar();
     } catch(e) {_msg(e, "moverPuntoControl")}
-    console.log('punto control')
     return puntoControl;
 };
 
@@ -2090,9 +2084,6 @@ tempConstructor.prototype.cerrarCamino = function(num1=0, num2=0, camino=null) {
             this.reubicarLineas(num2);
             this.marcarUltimoPunto();
             this.guardar();
-            console.log(num1)
-            console.log(num2)
-            console.log(camino)
         }
     } catch(e){_msg(e, "cerrarCamino")}
     return camino;
