@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^dashboard/$',views.dashboard, name="dashboard"),
     url(r'^perfil/$',views.perfil, name="perfil"),
     url(r'^analisis/$', views.analisis, name="analisis"),
+    url(r'^terreno/$', views.terreno, name="terreno"),
     url(r'^ordenes/$', views.ordenes, name="ordenes"),
     url(r'^monitoreo/$', views.monitoreo, name="monitoreo"),
     url(r'^facturacion/$', views.facturacion, name="facturacion"),

@@ -5576,6 +5576,8 @@ button.close {
   border-bottom: 1px solid #e9ecef;
   border-top-left-radius: 0.3rem;
   border-top-right-radius: 0.3rem;
+  background: linear-gradient(60deg, rgba(164,198,53,1) 100%, rgba(0,128,128,1) 100%);
+  color:#fff;
 }
 
 .modal-header .close {
@@ -5592,6 +5594,7 @@ button.close {
   position: relative;
   flex: 1 1 auto;
   padding: 1rem;
+  text-align:center;
 }
 
 .modal-footer {
@@ -16974,7 +16977,7 @@ label {
 }
 
 .card .card-body .form-group {
-  margin: 30px 0 0;
+  margin: 15px 0 0;
 }
 
 .card .card-header {

@@ -79,6 +79,37 @@
           </div>
         </div>
       </div>
+
+<div class="modal" tabindex="-1" role="dialog" id="pagar">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pagar Factura</h5>
+        <button type="button" class="close" onclick="cerrar()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div id="buy" style="">
+              <p> Escanea el siguiente codigo QR Dash Wallet para realizar el pago</p>
+              <div>
+                  <a id="link" >
+                      <img id="image">
+                  </a>
+              </div>
+              <br>
+              <p id="address"></p>
+              <input type="text" name="raffleaddress" value="xdkasj123454j4j42" maxlength="128" required="" id="raffleaddress" style="display: none;" class="form-control">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Pagar</button>
+        <button type="button" class="btn btn-secondary" onclick="cerrar()">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
           <div class="row">
             <div class="col-lg-6 col-md-12">
               <div class="card">
@@ -220,6 +251,7 @@
 
 {% block scripts %}
     {{ block.super }}
+
 <script type="text/javascript">
   var data = {
             labels: ['Arroz', 'Maiz', 'Caña'],
@@ -312,6 +344,55 @@
         responsive: false
       }
     });
- new Chartist.Pie('#produccion', data, options, responsiveOptions);
+/* new Chartist.Pie('#produccion', data, options, responsiveOptions);
+*/
+      var address = "xdkasj123454j4j42"
+      var price = 0.3
+      var number = 2;
+    
+          function requestQR(){
+          
+          if(number.value <= 0){
+            number.value = 1;
+          }
+
+            var n = 3
+            
+            console.log(address)
+            var dashuri = "dash:" + address + "?amount=" + String((n*price).toFixed(8)) + "&label=Tickets"
+            document.getElementById("image").src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+dashuri
+            document.getElementById("link").href = dashuri
+            document.getElementById("address").innerHTML = 'O envia ' + String((n*price).toFixed(3)) + ' Dash a la siguiente address: xdkasj123454j4j42'
+            $span = $('<span />').addClass('d-inline-block').attr({'rel':"tooltip", 'title':'Copiar address','tabindex':'0', 'data-placement':"right", 'style':'width:30px;'});
+            $li = $('<li />').addClass('fa fa-copy').attr({'onclick':'copy()', 'style':'color: #0062cc;cursor: pointer;'});
+            $('#address').append( $span );
+            ( $span ).append( $li )
+        }
+
+        requestQR() 
+
+      function copy() {
+         /* Get the text field */
+
+          console.log('hola muchachos')
+          var copyText = document.getElementById("raffleaddress");
+
+          const el = document.createElement('textarea');
+          el.value = copyText.value;
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand('copy');
+          document.body.removeChild(el);
+        }
+
+      function pagar(){
+        $("#pagar").show();
+      }
+
+
+      function cerrar(){
+        console.log('hola')
+        $("#pagar").hide();
+      }
 </script>
 {% endblock scripts%}

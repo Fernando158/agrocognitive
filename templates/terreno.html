@@ -1,0 +1,163 @@
+
+<html lang="es"><head>
+<link href="{{ STATIC_URL }}css/paper-bootstrap-wizard.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="{{ STATIC_URL }}css/material-dashboard.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="{{ STATIC_URL }}css/material-dashboard.css" rel="stylesheet" />
+    <link href="{{ STATIC_URL }}css/morris.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/cognos.css">
+
+        <style id="wxL.sel-css">[class="wxL.sel-punto"],[class="wxL.sel-puntoctrl"]{position:absolute;display:block;
+
+        width:16px;height:16px;line-height:16px;font-size:12px;
+
+        text-align:center;color:white}
+
+        [class="wxL.sel-punto"]{background-color:maroon}
+
+        [class="wxL.sel-punto"][data-sel]{box-shadow:0px 0px 8px 4px magenta;z-index:101001}
+
+        [class="wxL.sel-punto"][data-z],[class="wxL.sel-punto"][data-end]{background-color:blue!important}
+
+        [class="wxL.sel-linea"]{stroke:maroon;stroke-width:1px;fill:none}
+
+        [class="wxL.sel-puntoctrl"]{background-color:black;display:block;z-index:101000}
+
+        [class="wxL.sel-puntoctrl"][data-sel]{display:block}
+
+        [class="wxL.sel-lineactrl"]{stroke:black;stroke-width:1px;stroke-dasharray:4;fill:none;display:block}
+
+        [class="wxL.sel-lineactrl"][data-sel]{display:block}
+
+        .select-area-selector{background-color:rgba(255,255,0,0.5)!important}</style></head>
+        <body style="border:none;background-color:#fff !important"><header></header><main role="main">
+            <div class="file-upload">
+              <button class="btn btn-fill btn-success btn-wd" type="button" onclick="$('.file-upload-input').trigger( 'click' )" style="width:100% !important">Agregar Imagen</button>
+              <div class="image-upload-wrap">
+                <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                <div class="drag-text">
+                  <h3>Arrastra y suelta tu imagen aqui o selecciona Agregar imagen</h3>
+                </div>
+              </div>
+              <div class="file-upload-content">
+                    <img class="file-upload-image" src="#" alt="your image" />
+              </div>
+            </div>
+
+    <div id="contenido" align="center" style="display:none;">
+        <section>
+                <div class="ejemplo-linea" id="ejemplo1" unselectable="on" data-vpforcss="user-select" style="user-select: none;">
+                    <div id="contenedor" unselectable="on"
+                        style="
+                        position: relative;
+                        width: 600px;
+                        height: 420px;
+                        z-index: 0;
+                        overflow: hidden;
+                        outline: solid blue 1px;
+                        /*background-image: url('{{ STATIC_URL }}img/mapaTerreno.png');*/
+                        ">
+                        <img src="#" id="contenedor-imagen">
+                        <canvas id="canvas" width="400" height="300" unselectable="on">
+                            <span style="color: red" unselectable="on">Elemento
+                            <b>canvas</b> no soportado.</span>
+                        </canvas>
+                    </div>
+
+                    <div id="controles" unselectable="off"></div>
+                </div>
+        </section>
+
+        <div class="image-title-wrap">
+          <button type="button" onclick="removeUpload()" class="btn  btn-fill btn-danger btn-wd">Eliminar <span class="image-title">Subir Imagen</span></button>
+        </div>
+    </div>
+
+
+      <div class="content" style="display:none" id="coorde">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Coordenadas de los Puntos</h4>
+                  <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="coorde row">
+
+                    </div>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- <div ><h1></h1><div ></div></div> -->
+
+
+<script>var Wextensible={local:{sel:null,sel2:null,canvas:null,contexto:null,extraccion:null,zoomx:640/150, zoomy: 480/111}},wxL=Wextensible.local,wxG,wxR;
+
+    wxL.cargarSelectorArea=function(){wxL.sel=new Wextensible.SelectArea("wxL.sel","contenedor","controles");
+        wxL.extraccion=document.getElementById("extraccion")};Wextensible.iniciarPagina=function(){wxG=Wextensible.general;wxG.adjudicarEventosGenerales();wxG.cargarModulos([["select-area.js",wxL.cargarSelectorArea],"resaltador.js"]);wxR=Wextensible.resaltador;wxL.canvas=document.getElementById("canvas");if(wxL.canvas.getContext)wxL.contexto=wxL.canvas.getContext("2d");wxG.prefijarCss(["user-select"]);wxG.dotarVpCss();if(wxL.contexto==null)wxG.cargarTecladoAuxiliar(document.body);};window.onload=function(){if(Wextensible.generalJs){Wextensible.iniciarPagina();}else{var elemento=document.createElement("script");if(elemento.addEventListener){elemento.addEventListener("load",Wextensible.iniciarPagina);}else if(elemento.readyState=="uninitialized"){elemento.attachEvent("onreadystatechange",function(){if(elemento.readyState=="loaded")Wextensible.iniciarPagina();});}elemento.async=true;elemento.src="{{ STATIC_URL }}js/general-old.js";var head=document.getElementsByTagName("head")[0];if(head)head.appendChild(elemento);}};wxL.borrar=function(){wxL.contexto.clearRect(0,0,wxL.canvas.width,wxL.canvas.height);};wxL.dibujar=function(){if(wxL.contexto){var x=wxL.sel.selector.offsetLeft;var y=wxL.sel.selector.offsetTop;var w=wxL.sel.selector.offsetWidth;var h=wxL.sel.selector.offsetHeight;var forma=document.getElementById("forma").value;var color=document.getElementById("color").value;var grosor=document.getElementById("grosor").value;var union=document.getElementById("union").value;wxL.contexto.strokeStyle=color;wxL.contexto.lineWidth=grosor;wxL.contexto.lineJoin=union;if(wxL.sel.tipoSeleccion=="poligono"){if(forma=="rectangulo"){wxL.contexto.strokeRect(x,y,w,h);}else if(forma=="circulo"){if(wxL.contexto.ellipse){wxL.contexto.beginPath();wxL.contexto.ellipse(x+w/2, y+h/2,w/2, h/2,0,0,2*Math.PI,false);wxL.contexto.stroke();wxL.contexto.closePath();}else{var r,sx,sy;if(h>w){r=h/2;sx=w/h;sy=1;}else{r=w/2;sy=h/w;sx=1;}var x1=(x+w/2)/sx;var y1=(y+h/2)/sy;wxL.contexto.save();wxL.contexto.beginPath();wxL.contexto.scale(sx,sy);wxL.contexto.arc(x1,y1,r,0,2*Math.PI,true);wxL.contexto.stroke();wxL.contexto.closePath();wxL.contexto.restore();}}}else{wxL.contexto.beginPath();var x0,y0;for(var i in wxL.sel.listaPuntos){var x=wxL.sel.listaPuntos[i].x;var y=wxL.sel.listaPuntos[i].y;if(i==0){x0=x;y0=y;wxL.contexto.moveTo(x,y);}else{wxL.contexto.lineTo(x,y);}}var puntoFinal=wxL.sel.puntoFinalPoligono();wxL.contexto.lineTo(puntoFinal[0],puntoFinal[1]);wxL.contexto.stroke();wxL.contexto.closePath();}}};
+
+</script>
+<!-- <script src="{{ STATIC_URL }}js/core/jquery.min.js"></script> -->
+<script src="{{ STATIC_URL }}js/core/jquery.min.js"></script>
+<script src="{{ STATIC_URL }}js/core/popper.min.js"></script>
+<script src="{{ STATIC_URL }}js/core/bootstrap-material-design.min.js"></script>
+<script src="{{ STATIC_URL }}js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="{{ STATIC_URL }}js/plugins/arrive.min.js"></script>
+<script src="{{ STATIC_URL }}js/material-dashboard.js" type="text/javascript"></script>
+<!-- <script src="{{ STATIC_URL }}js/iframeResizer.contentWindow.min.js" type="text/javascript"></script> -->
+
+<script type="text/javascript">
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $('.image-upload-wrap').hide();
+
+              $('#contenedor-imagen').attr('src', e.target.result);
+              $('#coorde').show();
+              $('#contenido').show();
+
+              $('.image-title').html(input.files[0].name);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+          } else {
+            removeUpload();
+          }
+        }
+
+        function removeUpload() {
+          $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+          $('.file-upload-content').hide();
+          $('#contenido').hide();
+          $('.coorde').remove();
+          $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function () {
+                $('.image-upload-wrap').addClass('image-dropping');
+            });
+            $('.image-upload-wrap').bind('dragleave', function () {
+                $('.image-upload-wrap').removeClass('image-dropping');
+        });
+
+$( "#wxL.sel-punto7" ).click(function( event ) {
+  alert( event.type ); // "click"
+});
+
+</script>
+<script src="{{ STATIC_URL }}js/select-area.js" async=""></script>
+
+</body></html>

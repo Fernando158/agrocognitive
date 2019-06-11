@@ -371,7 +371,7 @@ md = {
 
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
-      var dataWebsiteViewsChart = {
+      /*var dataWebsiteViewsChart = {
         labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
         series: [
           [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
@@ -404,9 +404,9 @@ md = {
       var websiteViewsChart = Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
 
       //start animation for the Emails Subscription Chart
-      md.startAnimationForBarChart(websiteViewsChart);
+      md.startAnimationForBarChart(websiteViewsChart);*/
     }
-      var chart = new Chartist.Line('#ResumenSalesChart', {
+/*      var chart = new Chartist.Line('#ResumenSalesChart', {
       labels: ['0', '2', '4', '6', '8', '10'],
       series: [
         [5, 7, 3, 11, 6, 15],
@@ -417,9 +417,9 @@ md = {
       showArea: true,
       showPoint: false,
       fullWidth: true
-    });
+    });*/
 
-    chart.on('draw', function(data) {
+/*    chart.on('draw', function(data) {
       if(data.type === 'line' || data.type === 'area') {
         data.element.animate({
           d: {
@@ -430,8 +430,8 @@ md = {
             easing: Chartist.Svg.Easing.easeOutQuint
           }
         });
-      }
-    });
+      }*/
+
   },
 
   initMinimizeSidebar: function() {

@@ -93,4 +93,6 @@ def monitoreo(request):
 def facturacion(request):
 	return render(request, 'facturacion.html')
 
+def terreno(request):
+	return render(request, 'terreno.html')
 
