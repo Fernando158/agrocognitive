@@ -3393,7 +3393,7 @@ tbody.collapse.show {
   border-right: 0.3em solid transparent;
   border-bottom: 0;
   border-left: 0.3em solid transparent;
-  margin-left: 40px;
+  margin-left: 80px;
 }
 
 .dropdown-toggle:empty::after {
@@ -10805,7 +10805,7 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .form-check {
-/*  margin-bottom: .5rem;*/
+  margin-bottom: .5rem;
   padding-left: 0;
 }
 
@@ -10843,9 +10843,8 @@ fieldset[disabled] .form-group.is-focused .form-check .form-check-label {
   vertical-align: middle;
   position: relative;
   top: -2px;
-  float: right;
-  bottom: 
-/*  padding-right: 10px;*/
+  float: left;
+  padding-right: 10px;
   display: inline-block;
 }
 
@@ -11085,8 +11084,8 @@ fieldset[disabled] .form-group.is-focused .form-check .form-check-label {
   vertical-align: middle;
   position: relative;
   top: -2px;
-  float: right;
-  padding-left: 10px;
+  float: left;
+  padding-right: 10px;
   display: inline-block;
 }
 
@@ -14481,7 +14480,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   bottom: 0;
   left: 0;
   z-index: 2;
-  width: 220px;
+  width: 140px;
   background: #fff;
   box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
@@ -14506,7 +14505,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   position: relative;
   height: calc(100vh - 75px);
   overflow: auto;
-  width: 220px;
+  width: 140px;
   z-index: 4;
   padding-bottom: 30px;
 }
@@ -14643,8 +14642,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .sidebar .nav i {
-  font-size: 24px;
-  float: left;
+  font-size: 40px;
+  /*float: left;*/
   margin-right: 15px;
   line-height: 30px;
   width: 30px;
@@ -14661,7 +14660,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   padding-right: 10px;
   text-transform: capitalize;
   font-size: 13px;
-  padding: 10px 15px;
+  padding: 15px 30px;
 }
 
 .sidebar .sidebar-background {
@@ -14777,7 +14776,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   color: #fff;
 }
 
-.sidebar[data-color="purple"] li.active>a{
+.sidebar[data-color="purple"] li.active{
   background-color: #a4c635;
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
 }
@@ -14883,7 +14882,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .main-panel {
   position: relative;
   float: right;
-  width: calc(100% - 220px);
+  width: calc(100% - 140px);
   transition: 0.33s, cubic-bezier(0.685, 0.0473, 0.346, 1);
 }
 
@@ -14975,7 +14974,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     opacity: 0;
   }
   .sidebar-mini .sidebar:hover {
-    width: 260px;
+    width: 140px;
   }
   .sidebar-mini .sidebar:hover .logo a.logo-normal {
     opacity: 1;
@@ -18037,20 +18036,6 @@ Copyright (c) 2015 Daniel Eden
   .sidebar .navbar-form {
     display: none !important;
   }
-/*  #contenedor{
-  width: 250px;
-  height: 250px;
-  }
-
-  #canvas{
-  width: 250px;
-  height: 250px;
-  }
-
-  #contenedor-imagen{
-  width: 250px;
-  height: 250px;
-  }*/
 }
 
 @media screen and (max-width: 991px) {
@@ -18129,26 +18114,6 @@ Copyright (c) 2015 Daniel Eden
   .cd-vertical-nav {
     display: none !important;
   }
-
-  #coorde{
-    position: relative;
-    margin: 0px !important;
-  }
-
-    #contenedor{
-  width: 250px !important;
-  height: 250px !important;
-  }
-
-  #canvas{
-  width: 250px;
-  height: 250px;
-  }
-
-  #contenedor-imagen{
-  width: 250px;
-  height: 250px;
-  }
 }
 
 /*          Changes for small display      */
@@ -18157,7 +18122,6 @@ Copyright (c) 2015 Daniel Eden
   .form-group textarea {
     padding-top: 15px;
   }
-
   .nav-open .menu-on-left .main-panel {
     position: initial;
   }
@@ -18871,21 +18835,3 @@ Copyright (c) 2015 Daniel Eden
   border-right:2px solid green;
 }
 /*# sourceMappingURL=dashboard-free.css.map */
-
-.puntos{ 
-  position: absolute;
-  border: 1px solid #FFF;
-  font-size: 12px;
-  background: #F3BB45;
-  color: #FFF;
-  font-weight:900;
-  min-width: 20px;
-  padding: 0px 5px;
-  height: 20px;
-  border-radius: 10px;
-  text-align: center;
-  line-height: 20px;
-  vertical-align: middle;
-  display: block;
-  margin-left: -8px;
-}

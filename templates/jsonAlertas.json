@@ -1,0 +1,99 @@
+"table": {
+    "name": "Data_siniestralidad_v3",
+    "description": "description of the table for visual hints",
+    "column": [
+      {
+        "name": "Mes",
+        "datatype": "BIGINT",
+        "nullable": true,
+        "description": "Mes",
+        "label": "Mes",
+        "usage": "fact",
+        "regularAggregate": "total"
+      },
+      {
+        "name": "Siniestro_Total_2015",
+        "datatype": "DOUBLE",
+        "nullable": true,
+        "description": "Siniestro_Total_2015",
+        "label": "Siniestro Total 2015",
+        "usage": "fact",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Siniestro_Parcial_2015",
+        "datatype": "DOUBLE",
+        "nullable": true,
+        "description": "Siniestro_Parcial_2015",
+        "label": "Siniestro Parcial 2015",
+        "usage": "fact",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Numero_de_Siniestro_2015",
+        "datatype": "DOUBLE",
+        "nullable": true,
+        "description": "Número_de_Siniestro_2015",
+        "label": "Número de Siniestro 2015",
+        "usage": "fact",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Siniestro_Total_2016",
+        "datatype": "DOUBLE",
+        "nullable": true,
+        "description": "Siniestro_Total_2016",
+        "label": "Siniestro Total 2016",
+        "usage": "fact",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Siniestro_Parcial_2016",
+        "datatype": "DOUBLE",
+        "nullable": true,
+        "description": "Siniestro_Parcial_2016",
+        "label": "Siniestro Parcial 2016",
+        "usage": "fact",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Numero_de_Siniestro_2016",
+        "datatype": "DOUBLE",
+        "nullable": true,
+        "description": "Número_de_Siniestro_2016",
+        "label": "Número de Siniestro 2016",
+        "usage": "fact",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Siniestro_Total_2017",
+        "datatype": "DOUBLE",
+        "nullable": true,
+        "description": "Siniestro_Total_2017",
+        "label": "Siniestro Total 2017",
+        "usage": "fact",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Siniestro_Parcial_2017",
+        "datatype": "DOUBLE",
+        "nullable": true,
+        "description": "Siniestro_Parcial_2017",
+        "label": "Siniestro Parcial 2017",
+        "usage": "fact",
+        "regularAggregate": "countDistinct"
+      },
+      {
+        "name": "Numero_de_Siniestro_2017",
+        "datatype": "DOUBLE",
+        "nullable": true,
+        "description": "Número_de_Siniestro_2017",
+        "label": "Número de Siniestro 2017",
+        "usage": "fact",
+        "regularAggregate": "countDistinct"
+      }
+    ]
+  },
+  "label": "Module Name",
+  "identifier": "moduleId"
+};

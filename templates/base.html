@@ -21,7 +21,7 @@
   <body>
 {% if user.is_authenticated %}
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -30,7 +30,7 @@
 
       <div class="logo">
         <a href="#" class="simple-text logo-normal">
-          <img src="{{ STATIC_URL }}img/AgroCognitive-White.png" height="60"></img>
+          <img src="{{ STATIC_URL }}img/AgroCognitive-White.png" height="50"></img>
         </a>
       </div>
       <div class="sidebar-wrapper">
@@ -102,6 +102,76 @@
           </li>
         </ul>
       </div>
+
+<!--             <div class="logo">
+        <a href="#" class="simple-text logo-normal">
+          <img src="{{ STATIC_URL }}img/isotipo.png" height="60"></img>
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item"  rel="tooltip" data-placement="right" title="Dashboard" >
+            <a class="nav-link" href="{% url 'dashboard' %}">
+              <i class="fas fa x2 fa-helicopter"></i>
+            </a>
+          </li>
+          <li class="nav-item " rel="tooltip" data-placement="right" title="Perfil de Usuario">
+            <a class="nav-link" href="{% url 'perfil' %}">
+              <i class="material-icons">person</i>
+            </a>
+          </li>
+          <li class="nav-item"  rel="tooltip" data-placement="right" title="Monitoreo" id="monitoreo">
+             <a id="pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link" style="font-size:14px;" href="#">
+                <i class="fas fa-helicopter"></i>
+                
+             </a>
+
+            <ul class="collapse list-unstyled" style="background-color: rgba(200, 200, 200, 0.2);">
+               
+               <li class="nav-item" rel="tooltip" data-placement="right" title="Solicitar Monitoreo">
+                  <a href="{% url 'monitoreo' %}" class="nav-link">
+                    <i class="far fa-file-alt"></i>
+    
+                  </a>
+               </li>
+               <li class="nav-item" rel="tooltip" data-placement="right" title="An&aacute;lisis Actual">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+    
+                  </a>
+               </li>
+               <li class="nav-item" rel="tooltip" data-placement="right" title=">Hist&oacute;ricos y Evolutivos">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    <p</p>
+                  </a>
+               </li>
+               <li class="nav-item" rel="tooltip" data-placement="right" title="Reportes">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-print"></i>
+    
+                  </a>
+               </li>
+
+            </ul>
+          </li>
+          <li class="nav-item " rel="tooltip" data-placement="right" title="Ordenes de Servicio">
+            <a class="nav-link" href="{% url 'ordenes' %}">
+              <i class="material-icons">content_paste</i>
+            </a>
+          </li>
+          <li class="nav-item " rel="tooltip" data-placement="right" title="Facturacion">
+            <a class="nav-link" href="{% url 'facturacion' %}">
+              <i class="material-icons">library_books</i>
+            </a>
+          </li>
+          <li class="nav-item " rel="tooltip" data-placement="right" title="Cognos">
+            <a class="nav-link" href="{% url 'analisis' %}">
+              <i class="material-icons">language</i>
+            </a>
+          </li>
+        </ul>
+      </div> -->
     </div>
     <div class="main-panel">
       <!-- Navbar -->

@@ -29,6 +29,7 @@ var wxG = Wextensible.general;
 
 var puntoeli=""
 var pnum = ""
+
 const namePlus = {
     M: {x:"x", y:"y", plus00:"", plus01:"", plus10:"", plus11:"", plus20:"", lados:""},
     m: {x:"dx", y:"dy", plus00:"", plus01:"", plus10:"", plus11:"", plus20:"", lados:""},
@@ -275,22 +276,7 @@ tempConstructor.prototype.crearControles = function(idElemento){
                 document.head.appendChild(css);
             }
             let cad = `
-            #${idElemento} fieldset, #${idElemento} label{border:gray solid 1px;border-radius:0.5em;padding:0.2em;font-family:'Corbel',sans-serif}
-            #${idElemento} fieldset legend{font-weight:bold}
-            #${idElemento} fieldset legend label{border:0}
-            #${idElemento} label{display:inline-block;margin:0.2em 0.4em 0 0;padding:0.2em}
-            #${idElemento} input{color:maroon;font-size:1em;border-color:maroon;border-style:dotted;border-width:0 0 1px 0;background-color:transparent}
-            #${idElemento} input[disabled]{color:silver}
-            #${idElemento} input[type=number]{text-align:right}
-            #${idElemento} button{font-size:1em;margin:0.2em;padding:0.2em}
-            #${idElemento} select{color:maroon;font-size:1em}
-            #${idElemento} .conten-svgicon button{display:inline-block;border:none;padding:0;
-            color:rgb(49,99,98);background-color:transparent;background-image:none;font-size:0.8em;width:2.2em;height:1.8em}
-            #${idElemento} .conten-svgicon button:hover{background-color:rgb(49,99,98);color:white;fill:white}
-            #${idElemento} .conten-svgicon button[disabled]{fill:silver}
-            #${idElemento} .grupo{margin:0.2em 0}
-            #${idElemento} .botonesDistancia{font-size:0.85em}
-            #${idElemento} .centroxyradio span{font-family:'Lucida Console',monospace;color:maroon}
+            
             `;
             css.textContent = cad;
             let styLegend = "", styArea = "", styPoligono = "", styBoton = "";
@@ -1539,7 +1525,6 @@ tempConstructor.prototype.crearPunto = function(x=0, y=0, cmd="L", plus=[], sobr
             this.listaPuntos.push({x, y, cmd, z:-1, plus});
             num = this.listaPuntos.length-1;
             punto = this.capaPuntos.appendChild(punto);
-        $('.coorde').append('<div class="col-md-3" id="sel-punto'+num+'">punto:'+num+' <div class="form-group"><label class="bmd-label-floating">Coordenadas:</label><input type="text" class="form-control"></div></div>')
         }
         punto.id = `${this.nombre}-punto${num}`;
         if (this.conNumero) punto.textContent = num;
@@ -1621,7 +1606,16 @@ tempConstructor.prototype.marcarUltimoPunto = function(){
             } else {
                 punto.setAttribute("data-end", num);
                 pnum=num+1
-/*                console.log(num+1)
+                console.log(pnum)
+                var i 
+                for (i = 0; i < pnum; i++) {
+                    if($('#sel-punto'+i+'').length == 0) {
+                        $('.coorde').append('<div class="col-md-4" id="sel-punto'+i+'"><div class="form-group"><label class="bmd-label-floating"><span class="puntos">'+i+'</span></label><input type="text" class="form-control"></div></div>')
+                    }
+                }
+
+/*                
+*//*                console.log(num+1)
                 puntoeli = document.getElementById('sel-punto'+num);
                 console.log(puntoeli)*/
             }
@@ -2641,6 +2635,7 @@ tempConstructor.prototype.borrarPuntos = function(borrarBak=true){
         }
         listaPuntos = this.listaPuntos;
     } catch(e) {_msg(e, "borrarPuntos")}
+    $('.coorde').empty()
     return listaPuntos;
 };
 

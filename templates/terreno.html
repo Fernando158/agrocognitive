@@ -12,33 +12,35 @@
     </head>
         <body style="border:none;background-color:#fff !important"><header></header><main role="main">
             <div class="file-upload">
-              <button class="btn btn-fill btn-success btn-wd" type="button" onclick="$('.file-upload-input').trigger( 'click' )" style="width:100% !important" id="agregar">Agregar Imagen</button>
               <div class="image-upload-wrap">
                 <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
                 <div class="drag-text">
                   <h3>Arrastra y suelta tu imagen aqui o selecciona Agregar imagen</h3>
                 </div>
+
               </div>
               <div class="file-upload-content">
                     <img class="file-upload-image" src="#" alt="your image" />
               </div>
+                <button class="btn btn-fill btn-success btn-wd" type="button" onclick="$('.file-upload-input').trigger( 'click' )" style="width:100% !important" id="agregar">Agregar Imagen</button>
             </div>
 
+    <h2 id="texto" style="display:none">Ingrese las coordenadas para el monitoreo</h2>
     <div id="contenido" align="center" style="display:none;">
         <section>
                 <div class="ejemplo-linea" id="ejemplo1" unselectable="on" data-vpforcss="user-select" style="user-select: none;">
                     <div id="contenedor" unselectable="on"
                         style="
                         position: relative;
-                        width: 600px;
-                        height: 420px;
+                        width: 500px;
+                        height: 400px;
                         z-index: 0;
                         overflow: hidden;
                         outline: solid blue 1px;
                         /*background-image: url('{{ STATIC_URL }}img/mapaTerreno.png');*/
                         ">
-                        <img src="#" id="contenedor-imagen">
-                        <canvas id="canvas" width="400" height="300" unselectable="on">
+                        <img src="#" id="contenedor-imagen" width="500" height="400">
+                        <canvas id="canvas" width="500" height="400" unselectable="on">
                             <span style="color: red" unselectable="on">Elemento
                             <b>canvas</b> no soportado.</span>
                         </canvas>
@@ -47,14 +49,20 @@
                     <div id="controles" unselectable="off"></div>
                 </div>
         </section>
-        
-        <div class="image-title-wrap" id="eliminar">
-          <button type="button" onclick="removeUpload()" class="btn  btn-fill btn-danger btn-wd">Eliminar <span class="image-title"></span></button>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button class="btn btn-fill btn-success btn-wd" type="button" onclick="$('.file-upload-input').trigger( 'click' )" style="width:100% !important" id="cambiar" align="center">Cambiar Imagen</button>
+            </div>
+<!--             <div class="col-md-6">
+                <div class="image-title-wrap" id="eliminar">
+                  <button type="button" onclick="removeUpload()" class="btn  btn-fill btn-danger btn-wd" align="left">Eliminar <span class="image-title"></span></button>
+                </div>
+            </div> -->
         </div>
     </div>
-    <div class="content col-md-6" style="display:none;position: absolute;margin-top:-440px;margin-left:620px" id="coorde">
-        <div class="container-fluid">
-          <div class="row">
+
+          <div class="row" style="display:none;position: absolute;margin-top: -420px; margin-left: 500px;" id="coorde">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
@@ -64,7 +72,7 @@
                 <div class="card-body">
                   <form>
                     <div class="coorde row">
-
+                    
                     </div>
                     <div class="clearfix"></div>
                   </form>
@@ -72,16 +80,7 @@
               </div>
             </div>
           </div>
-        </div>
-    </div>
 
-
-<div class="wizard-footer" id="siguiente">
-    <div class="pull-right">
-        <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Siguiente' onclick="Siguiente()" id="jamon" />
-    </div>
-    <div class="clearfix"></div>
-</div>
     
 
 <!-- <div ><h1></h1><div ></div></div> -->
@@ -99,6 +98,7 @@
 <script src="{{ STATIC_URL }}js/core/bootstrap-material-design.min.js"></script>
 <script src="{{ STATIC_URL }}js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <script src="{{ STATIC_URL }}js/plugins/arrive.min.js"></script>
+<script src="{{ STATIC_URL }}js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <script src="{{ STATIC_URL }}js/material-dashboard.js" type="text/javascript"></script>
 <script src="{{ STATIC_URL }}js/iframeResizer.contentWindow.min.js" type="text/javascript"></script>
 
@@ -109,7 +109,8 @@
             var reader = new FileReader();
 
             reader.onload = function(e) {
-              $('.image-upload-wrap').hide();
+              $('.file-upload').hide();
+              $('#agregar').hide();
 
               $('#contenedor-imagen').attr('src', e.target.result);
               $('#contenido').show();
@@ -138,16 +139,30 @@
                 $('.image-upload-wrap').removeClass('image-dropping');
         });
 
-       function Siguiente(){
+        function Siguiente(){
             $('#coorde').show();
+            $('#texto').show();
             $('#contenido').attr('align', 'left')
             $('#contenido').css('pointer-events','none')
             $('#controles').css('display','none')
             $('#eliminar').css('display','none')
-            $('#agregar').css('display','none')
+            $('#cambiar').css('display','none')
             $('#siguiente').hide()
-            $('#btn-siguiente').show()
-       }
+/*            $('#btn-siguiente').show()*/
+        }
+
+        function Atras(){
+            $('#coorde').hide();
+            $('#texto').hide();
+            $('#contenido').attr('align', 'center')
+            $('#contenido').css('pointer-events','all')
+            $('#controles').css('display','block')
+            $('#eliminar').css('display','block')
+            $('#cambiar').css('display','block')
+            /*$('#siguiente').hide()*/
+            /*$('#btn-siguiente').show()*/
+        }
+
 
 </script>
 <script src="{{ STATIC_URL }}js/select-area.js" async=""></script>

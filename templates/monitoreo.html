@@ -8,7 +8,6 @@
 	iframe {
     	width: 1px;
     	min-width: 100%;
-    	min-height: 100%;
     	border:none;
   	}
 </style>
@@ -45,7 +44,7 @@
 											</a>
 										</li>
 			                            <li class="font-li">
-											<a href="#account" data-toggle="tab">
+											<a href="#about" data-toggle="tab">
 												<div class="icon-circle">
 													<i class="fas fa-map-marked-alt"></i>
 												</div>
@@ -64,7 +63,9 @@
 								</div>
 		                        <div class="tab-content">
 		                            <div class="tab-pane" id="about">
-		                            	<iframe src="{% url 'terreno' %}" id="myIframe"></iframe>
+			                            <div id="G-wrapper">
+			                            	<iframe src="{% url 'terreno' %}" id="myIframe" frameborder="0" height="100"></iframe>
+			                            </div>
 									</div>
 		                            <div class="tab-pane" id="account">
 		                                <h4 class="info-text"> Selecciona el area de monitoreo</h4>
@@ -76,22 +77,46 @@
 		                            </div>
 		                            <div class="tab-pane" id="address">
 		                                <div class="row" style="margin-top:20px;">
-					                      <div class="col-md-5">
+					                      <div class="col-md-4">
 					                        <div class="form-group">
 					                          <label class="bmd-label-floating">Nro de Orden</label>
 					                          <input type="text" class="form-control" value="1234565667" disabled>
 					                        </div>
 					                      </div>
-					                      <div class="col-md-3">
+					                      <div class="col-md-4">
 					                        <div class="form-group">
-					                          <label class="bmd-label-floating">Cultivo</label>
-					                          <input type="text" class="form-control">
+					                          <label class="bmd-label-floating">Nombre de la finca</label>
+					                          <input type="email" class="form-control">
 					                        </div>
 					                      </div>
 					                      <div class="col-md-4">
 					                        <div class="form-group">
-					                          <label class="bmd-label-floating">Coordenadas</label>
+					                          <label class="bmd-label-floating">Tipo de Cultivo</label>
+					                          <input type="text" class="form-control">
+					                        </div>
+					                      </div>
+					                   </div>
+					                   <div class="row" style="margin-top:20px;">
+					                      <div class="col-md-4">
+					                        <div class="form-group">
+					                          <label class="bmd-label-floating">Nro de Hectareas</label>
+					                          <input type="text" class="form-control" value="">
+					                        </div>
+					                      </div>
+					                      <div class="col-md-4">
+					                        <div class="form-group">
+					                          <label class="bmd-label-floating">Localidad</label>
 					                          <input type="email" class="form-control">
+					                        </div>
+					                      </div>
+					                      <div class="col-md-4">
+					                        <div class="form-group">
+					                          		<select name="frecuencia" class="form-control">
+														<option disabled="" selected="">Frecuencia de Monitoreo</option>
+	                                                	<option value="1">Semanal</option>
+	                                                	<option value="2">Mensual</option>
+	                                                	<option value="3">Trimestral</option>
+	                                            	</select>
 					                        </div>
 					                      </div>
 					                   </div>
@@ -104,24 +129,24 @@
 					                      </div>
 					                      <div class="col-md-3">
 					                      	<div class="form-group">
-		                                            <label class="bmd-label-floating">Requiere Dron?</label>
+<!-- 		                                            <label class="bmd-label-floating"></label> -->
 	                                            	<select name="dron" class="form-control">
-														<option disabled="" selected=""></option>
-	                                                	<option value="Si"> Si </option>
-	                                                	<option value="No"> No </option>
+														<option disabled="" selected="">Tipo de levantamiento de imagen</option>
+	                                                	<option value="1">Satelital</option>
+	                                                	<option value="2">RPA</option>
 	                                            	</select>
 		                                   	</div>
 					                      </div>
 					                   </div>
 		                        	</div>
 		                        <div class="wizard-footer">
-		                            <div class="pull-right"  style="display:none" >
-		                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Siguiente' id="btn-siguiente"/>
+		                            <div class="pull-right">
+		                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Siguiente' id="btn-siguiente" onclick="pasar()" />
 		                                <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Finalizar' />
 		                            </div>
 
 		                            <div class="pull-left">
-		                                <input type='button' class='btn btn-previous btn-default btn-wd' name='previous' value='Atras' />
+		                                <input type='button' class='btn btn-previous btn-default btn-wd' name='previous' value='Atras' onclick="volver()" />
 		                            </div>
 		                            <div class="clearfix"></div>
 		                        </div>
@@ -145,7 +170,21 @@
 <!--     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script> -->
 	<script type="text/javascript">
 /*	const  iframes  =  iFrameResize ([{options}], [css selector] || [iframe]);*/
+$(document).ready(function() {
 	iFrameResize({ log: true }, '#myIframe')
- $('#myIframe').on('load', function(){ var iframe = $('#myIframe').contents(); iframe.find("#jamon").click(function(){ console.log("test");})}); 
+});
+
+function pasar(){
+		document.getElementById('myIframe').contentWindow.Siguiente()
+	}
+
+	function volver(){
+		var href = $("#address").hasClass("active")
+		if(href == false){
+		document.getElementById('myIframe').contentWindow.Atras()
+		}
+	}
+
+	$("#G-wrapper").click (function () { $(this).find ("iframe").css ("pointer-events", "auto"); }); $("#G-wrapper").mouseleave (function () { $(this).find ("iframe").css ("pointer-events", "none"); }); 
  </script>
 {% endblock scripts%}
