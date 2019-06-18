@@ -1153,7 +1153,7 @@ input[type="button"]:focus {
 .wizard-card .wizard-footer {
   padding: 0 15px 5px;
 }
-.wizard-card .disabled {
+#atras .disabled {
   display: none;
 }
 .wizard-card .wizard-header {

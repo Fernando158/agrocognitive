@@ -88,7 +88,7 @@
 					                      <div class="col-md-4">
 					                        <div class="form-group">
 					                          <label class="bmd-label-floating">Nombre de la finca</label>
-					                          <input type="email" class="form-control">
+					                          <input type="text" class="form-control">
 					                        </div>
 					                      </div>
 					                      <div class="col-md-4">
@@ -98,11 +98,6 @@
 					                        </div>
 					                      </div>
 					                   </div>
-					                   <div class="row">
-		                            		<div class="container">
-											    
-											</div>
-										</div>
 					                   <div class="row" style="margin-top:20px;">
 					                      <div class="col-md-4">
 					                        <div class="form-group">
@@ -113,7 +108,7 @@
 					                      <div class="col-md-4">
 					                        <div class="form-group">
 					                          <label class="bmd-label-floating">Localidad</label>
-					                          <input type="email" class="form-control">
+					                          <input type="text" class="form-control">
 					                        </div>
 					                      </div>
 					                      <div class="col-md-4">
@@ -154,11 +149,11 @@
 		                        	</div>
 		                        <div class="wizard-footer">
 		                            <div class="pull-right">
-		                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Siguiente' id="btn-siguiente" onclick="pasar()" />
+		                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Siguiente' id="btn-siguiente" />
 		                                <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Finalizar' />
 		                            </div>
 
-		                            <div class="pull-left">
+		                            <div class="pull-left" id="atras">
 		                                <input type='button' class='btn btn-previous btn-default btn-wd' name='previous' value='Atras' onclick="volver()" />
 		                            </div>
 		                            <div class="clearfix"></div>
@@ -170,6 +165,24 @@
 	    	</div><!-- end row -->
 </div>
 
+
+<div id="alerta" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog" style="width: 400px;">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" style="font-weight: bold; font-size: 18px; color:#fff;">Información Importante</h4>
+              </div>
+              <div class="modal-body">
+                  <p style="font-size: 16px; color:#000;" id="mensaje"></p>
+              </div>
+              <div class="modal-footer">
+                  
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="aceptarModal" aria-hidden="true">Aceptar</button>
+              
+              </div>
+          </div>
+      </div>
+  </div>
 {% endblock content %}
 
 {% block scripts %}
@@ -179,12 +192,9 @@
     <script type="text/javascript">
 	/*	const  iframes  =  iFrameResize ([{options}], [css selector] || [iframe]);*/
 		$(document).ready(function() {
-			iFrameResize({ log: true }, '#myIframe')
+			iFrameResize({ log: false }, '#myIframe')
 		});
 
-		function pasar(){
-				document.getElementById('myIframe').contentWindow.Siguiente()
-			}
 
 			function volver(){
 				var href = $("#address").hasClass("active")
@@ -216,5 +226,7 @@ $(function () {
             $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
         });
     });
+
+
  </script>
 {% endblock scripts%}

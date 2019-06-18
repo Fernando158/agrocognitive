@@ -81,7 +81,6 @@
             </div>
           </div>
 
-    
 
 <!-- <div ><h1></h1><div ></div></div> -->
 
@@ -90,6 +89,13 @@
 
     wxL.cargarSelectorArea=function(){wxL.sel=new Wextensible.SelectArea("wxL.sel","contenedor","controles");
         wxL.extraccion=document.getElementById("extraccion")};Wextensible.iniciarPagina=function(){wxG=Wextensible.general;wxG.adjudicarEventosGenerales();wxG.cargarModulos([["select-area.js",wxL.cargarSelectorArea],"resaltador.js"]);wxR=Wextensible.resaltador;wxL.canvas=document.getElementById("canvas");if(wxL.canvas.getContext)wxL.contexto=wxL.canvas.getContext("2d");wxG.prefijarCss(["user-select"]);wxG.dotarVpCss();if(wxL.contexto==null)wxG.cargarTecladoAuxiliar(document.body);};window.onload=function(){if(Wextensible.generalJs){Wextensible.iniciarPagina();}else{var elemento=document.createElement("script");if(elemento.addEventListener){elemento.addEventListener("load",Wextensible.iniciarPagina);}else if(elemento.readyState=="uninitialized"){elemento.attachEvent("onreadystatechange",function(){if(elemento.readyState=="loaded")Wextensible.iniciarPagina();});}elemento.async=true;elemento.src="{{ STATIC_URL }}js/general-old.js";var head=document.getElementsByTagName("head")[0];if(head)head.appendChild(elemento);}};wxL.borrar=function(){wxL.contexto.clearRect(0,0,wxL.canvas.width,wxL.canvas.height);};wxL.dibujar=function(){if(wxL.contexto){var x=wxL.sel.selector.offsetLeft;var y=wxL.sel.selector.offsetTop;var w=wxL.sel.selector.offsetWidth;var h=wxL.sel.selector.offsetHeight;var forma=document.getElementById("forma").value;var color=document.getElementById("color").value;var grosor=document.getElementById("grosor").value;var union=document.getElementById("union").value;wxL.contexto.strokeStyle=color;wxL.contexto.lineWidth=grosor;wxL.contexto.lineJoin=union;if(wxL.sel.tipoSeleccion=="poligono"){if(forma=="rectangulo"){wxL.contexto.strokeRect(x,y,w,h);}else if(forma=="circulo"){if(wxL.contexto.ellipse){wxL.contexto.beginPath();wxL.contexto.ellipse(x+w/2, y+h/2,w/2, h/2,0,0,2*Math.PI,false);wxL.contexto.stroke();wxL.contexto.closePath();}else{var r,sx,sy;if(h>w){r=h/2;sx=w/h;sy=1;}else{r=w/2;sy=h/w;sx=1;}var x1=(x+w/2)/sx;var y1=(y+h/2)/sy;wxL.contexto.save();wxL.contexto.beginPath();wxL.contexto.scale(sx,sy);wxL.contexto.arc(x1,y1,r,0,2*Math.PI,true);wxL.contexto.stroke();wxL.contexto.closePath();wxL.contexto.restore();}}}else{wxL.contexto.beginPath();var x0,y0;for(var i in wxL.sel.listaPuntos){var x=wxL.sel.listaPuntos[i].x;var y=wxL.sel.listaPuntos[i].y;if(i==0){x0=x;y0=y;wxL.contexto.moveTo(x,y);}else{wxL.contexto.lineTo(x,y);}}var puntoFinal=wxL.sel.puntoFinalPoligono();wxL.contexto.lineTo(puntoFinal[0],puntoFinal[1]);wxL.contexto.stroke();wxL.contexto.closePath();}}};
+
+$(document).ready(function(){
+    if ("{{ message }}" != ""){
+        $('#mensaje').html("Debes ingresa la imagen a realizar el monitoreo")
+          $('#alerta').modal('show')
+        }
+   });
 
 </script>
 <!-- <script src="{{ STATIC_URL }}js/core/jquery.min.js"></script> -->
@@ -162,7 +168,6 @@
             /*$('#siguiente').hide()*/
             /*$('#btn-siguiente').show()*/
         }
-
 
 </script>
 <script src="{{ STATIC_URL }}js/select-area.js" async=""></script>

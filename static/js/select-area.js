@@ -1233,7 +1233,6 @@ tempConstructor.prototype.aplicarPropiedadesPunto = function(){
             if (cmd==="-") cmd = "M";
             punto = this.crearPunto(punto.x, punto.y, cmd, plus);
         } else {
-            console.log(plus);
             this.modificarLinea(cmd, plus);
             this.moverPunto(num, punto.x, punto.y);
         }
@@ -1606,11 +1605,10 @@ tempConstructor.prototype.marcarUltimoPunto = function(){
             } else {
                 punto.setAttribute("data-end", num);
                 pnum=num+1
-                console.log(pnum)
                 var i 
                 for (i = 0; i < pnum; i++) {
                     if($('#sel-punto'+i+'').length == 0) {
-                        $('.coorde').append('<div class="col-md-4" id="sel-punto'+i+'"><div class="form-group"><label class="bmd-label-floating"><span class="puntos">'+i+'</span></label><input type="text" class="form-control"></div></div>')
+                        $('.coorde').append('<div class="col-md-4" id="sel-punto'+i+'"><div class="form-group"><label class="bmd-label-floating"><span class="puntos">'+i+'</span></label><input type="text" class="form-control" value="X:"><input type="text" class="form-control" value="Y:"></div></div>')
                     }
                 }
 

@@ -39,10 +39,10 @@ transparent = true;
         $(document).ready(function(){
 
             /*  Activate the tooltips      */
-            /*$('[rel="tooltip"]').tooltip();*/
+            $('[rel="tooltip"]').tooltip();
 
             // Code for the Validator
-           /* var $validator = $('.wizard-card form').validate({
+            var $validator = $('.wizard-card form').validate({
         		  rules: {
         		    firstname: {
         		      required: true,
@@ -56,7 +56,7 @@ transparent = true;
         		      required: true
         		    }
                 },
-        	});*/
+        	});
 
             // Wizard Initialization
           	$('.wizard-card').bootstrapWizard({
@@ -65,6 +65,17 @@ transparent = true;
                 'previousSelector': '.btn-previous',
 
                 onNext: function(tab, navigation, index) {
+                    var URLactual = document.getElementById('myIframe').contentWindow.window.location;
+                    var iframe = document.getElementById('myIframe').contentWindow.document.getElementById('contenedor-imagen')
+                    if (iframe.src == URLactual+'#')  {
+                        $('#mensaje').html("Debes Ingresar la zona a monitorar para Continuar con tu solicitud")
+                        $('#alerta').modal('show')
+                        $("#aceptarModal").click(function(){
+                              $(iframe).focus()
+                        })
+                        return false
+                    }
+                    document.getElementById('myIframe').contentWindow.Siguiente()
                 	var $valid = $('.wizard-card form').valid();
                 	if(!$valid) {
                 		$validator.focusInvalid();
